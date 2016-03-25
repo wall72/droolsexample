@@ -1,0 +1,24 @@
+package droolsexample
+
+import droolsexample.domain.User
+
+
+rule "Adult"
+	salience 100
+    when
+        user:User (age > 18, adult == false)
+    then
+    	user.setAdult(true);
+    	update(user);
+    	System.out.printf("Person %s has been marked as adult", user.getName());
+
+end
+
+rule "Alcohol"
+    salience -100
+    when
+        user:User (adult == false)
+    then
+    	System.out.printf("Shop: Sorry %s, you are not allowed to buy alcohol", user.getName());
+
+end

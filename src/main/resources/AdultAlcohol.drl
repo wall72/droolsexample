@@ -4,7 +4,7 @@ import droolsexample.domain.User
 
 
 rule "Adult"
-	salience 100
+
     when
         user:User (age > 18, adult == false)
     then
@@ -15,7 +15,7 @@ rule "Adult"
 end
 
 rule "Alcohol"
-    salience -100
+
     when
         user:User (adult == false)
     then
